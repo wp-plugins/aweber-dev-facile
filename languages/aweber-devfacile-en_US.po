@@ -1,0 +1,99 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Aweber Dev Facile\n"
+"POT-Creation-Date: 2015-04-29 16:20+0100\n"
+"PO-Revision-Date: 2015-04-29 21:57+0100\n"
+"Last-Translator: \n"
+"Language-Team: Matthieu <matthieu@actionscript-facile.com>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;_e;_c\n"
+"X-Poedit-SearchPath-0: D:\\Users\\8109662A\\Documents\\prive-personnel"
+"\\formation\\plugin\\aweber-devfacile\n"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:20
+msgid "Title-Page-Admin"
+msgstr "AWeber Dev Facile"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:21
+msgid "Text-Page-Admin"
+msgstr "Configure the plugin AWeber Dev Facile"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:22
+msgid "Connection-AWeber-closed"
+msgstr "Your connection to your AWeber account has been closed."
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:23
+msgid "Connection-AWeber-not-possible"
+msgstr "Unable to connect to your AWeber Account:"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:24
+msgid "Connection-AWeber-successfull"
+msgstr "You've successfully connected to your AWeber account!"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:25
+msgid "Authorization-code-entered"
+msgstr "Authorization code entered was:"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:26
+msgid "sure-entered-complete-authorization"
+msgstr ""
+"Please make sure you entered the complete authorization code and try again."
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:27
+msgid "btn-remove-connection"
+msgstr "Remove Connection"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:30
+msgid "get-authorization-code"
+msgstr "Click here to get your authorization code."
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:31
+msgid "paste-authorization-code"
+msgstr "Collez votre code d'autorisation AWeber : "
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:32
+msgid "btn-make-connection"
+msgstr "Créer la connection avec AWeber"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:33
+msgid "step-1"
+msgstr "Step 1:"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:34
+msgid "step-2"
+msgstr "Step 2:"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:37
+msgid "Title-AWeber-Dev-Facile-Settings"
+msgstr "Options"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:38
+msgid "Text-AWeber-Dev-Facile-Settings"
+msgstr "  "
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:41
+msgid "Title-AWeber-Dev-Facile-Marketing"
+msgstr "Read this if you would to boost your activity"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/languages/strings.php:42
+msgid "Text-AWeber-Dev-Facile-Marketing"
+msgstr ""
+"My name is Matthieu and i am french copywriter. <br />I use <strong>the "
+"power of words to improve conversion rates, sales and revenues</strong> of "
+"my clients. <br /> <br />I decided to <strong>free share my knowledge, my "
+"experience, my strategies and the latest news</strong> - who are proven ! "
+"- in the field of copywriting. <br />To help you with a simple and "
+"effective way, i have set up <strong>free training on using the power of "
+"word to multiply your business.</strong> <br /> <br /><strong>Find simply "
+"your details </strong>in thje form below !<br /> <br />At right away to "
+"get to know"
+
+#: D:\Users\8109662A\Documents\prive-personnel\formation\plugin\aweber-devfacile/views/admin/widget.php:7
+msgid "Title"
+msgstr "   "
