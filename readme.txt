@@ -71,6 +71,8 @@ Aweber Dev Facile est un plugin Wordpress qui affiche le nombre d'inscrits d'une
 
 == Upgrade Notice ==
 
+= 0.2 =
+Plugin improvements.  Upgrade-it !
 
 = 0.1 =
 Plugin creation.  Upgrade-it !
