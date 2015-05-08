@@ -41,6 +41,8 @@ if ( !defined('ABSPATH') )
  * Exemple of use
  *
  * [AWcount select="list-name-1,list-name-2,list-name-3,list-name-4"] 
+ * echo do_shortcode('[AWcount selectList="your_list_name_1, your_list_name_2"]');
+ * 
  */
 
 // Plugin tables
@@ -65,7 +67,7 @@ function _devfacile_load_files($dir, $files, $prefix = '')
 {
 	foreach ($files as $file) 
 	{
-		// echo $dir . $prefix . $file . ".php <br/>";
+		// echo $dir . $prefix . $file . ".php <br/> \n";
 		if ( is_file($dir . $prefix . $file . ".php") ) 
 			require_once($dir . $prefix . $file . ".php");	
 	}	
@@ -79,10 +81,10 @@ _devfacile_load_files( DEV_DIR.'classes/', array( 'main', 'plugin', 'settings' )
 
 // Les classes admin
 if (is_admin()) 
-	_devfacile_load_files( DEV_DIR.'classes/admin/', array( 'admin', 'page', 'main' ) );
+	_devfacile_load_files( DEV_DIR.'classes/admin/', array( 'admin', 'copywriting', 'main' ) );
 
 // Les fonctions
-_devfacile_load_files( DEV_DIR.'functions/', array( 'plugin', 'tpl' ) );
+_devfacile_load_files( DEV_DIR.'functions/', array( 'api-AW-devfacile' ) );
 
 
 // Plugin activate/desactive hooks
@@ -106,130 +108,15 @@ function init_AWeberDevFacile_plugin()
 	{
 		$oAWeberDevFacile['admin'] = new AWeberDevFacile_Admin();
 		add_action( 'admin_menu', 'displayAdminAWeberDevFacile' );// create admin menu plugin
-		//$oAWeberDevFacile['admin_page'] = new AWeberDevFacile_Admin_Page();
 	}
-
-	// Widget
-	//add_action('widgets_init', create_function('', 'return register_widget("AWeberDevFacile_Widget");'));
 }
 
+
+/**
+ * launch initialisation of the plugin
+ * 
+ */
 add_action( 'plugins_loaded', 'init_AWeberDevFacile_plugin' );
-
-
-/**
- * Add link in panel admin of wordpress
- * 
- * @return [type] [description]
- */
-function displayAdminAWeberDevFacile()
-{
-	if (function_exists('add_options_page')) 
-	{
-		// add settings options for the plugin
-        register_setting(DEV_OPTION_SETTINGS, 'aweber_devfacile_oauth_id');
-        register_setting(DEV_OPTION_SETTINGS, 'aweber_devfacile_oauth_removed');
-        register_setting(DEV_OPTION_SETTINGS, 'aweber_devfacile_settings_lists');
-
-		// add a link tu sub menu settings
-        add_options_page('AWeber DevFacile', 'AWeber DevFacile', 'manage_options', basename(__FILE__), 'displayAdminPageAWeberDevFacile');
-    }
-}
-
-
-/**
- * Build the page in admin panel
- * 
- * @return [type] [description]
- */
-function displayAdminPageAWeberDevFacile()
-{
-	global $oAWeberDevFacile;
-
-	$oAppAdminAWeber = $oAWeberDevFacile['admin'];
-	$oAppAdminAWeber->connectToAWeberAccount();
-}
-
-
-
-
-/**
- * Get AWeber count subscrivers from selected list
- * 
- * @return [type] [description]
- */
-function get_AW_count($atts)
-{
-	global $oAWeberDevFacile, $wpdb;
-
-	$nTotalSubscribers = 0;
-
-	/*echo '<br/>--- atts <br/><pre>'; 
-	print_r($atts);*/
-
-	// get all selected lists
-    extract(
-    	shortcode_atts(
-    		array(
-    			'select' => '',    			
-    		), 
-    		$atts
-    	)
-    );
-
-    $oStoredSettings = new AWeberDevFacile_Settings();
-    $oDataInfos = $oStoredSettings->getDatasByLists($select);
-
-    if( $oDataInfos->nCodeContinue == -9 )
-    {
-    	// get infos of list with API AWeber
-	    $aLists = explode(",",$select);
-		
-		// if nothing select list
-	    if(count($aLists)<=0)
-	    	return 0;
-
-		$oAppAWeber = $oAWeberDevFacile['client'];
-		$nRetourConnect = $oAppAWeber->connectToAWeberAccount();
-
-		if( $nRetourConnect == -1 || $nRetourConnect == -2 )
-			return $oDataInfos->nTotalSubscrivers;// error code
-
-		//$oAppAWeber->setDebug(true);
-
-		// get all list subscribers
-		foreach ($aLists as $value) 
-		{
-		    $oList = $oAppAWeber->findList($value);
-
-		    if( $oList == -1 )
-				return $oDataInfos->nTotalSubscrivers;// error code
-
-		    /*echo '--- <br/><pre>'; 
-			print_r($oList);*/
-
-		    if( $oList->total_subscribers != 0 )
-		    {
-		        $nTotalSubscribers += $oList->total_subscribed_subscribers;// Number of Subscribers where status=subscribed
-		        //$nTotalAllSubscribers += $oList->total_subscribers;// Number of Subscribers where status=subscribed
-		    }    
-		}
-
-		unset($value); // delete reference on last element
-		
-		// remove datas in options wordpress
-		$nCodeErrorRemove = $oStoredSettings->removeRecord($select);
-		if( $nCodeErrorRemove == -1)
-			return $nTotalSubscribers;// error code
-
-		// store datas in options wordpress
-		$oStoredSettings->addRecord($select, $nTotalSubscribers);
-    }
-    else
-    	$nTotalSubscribers = $oDataInfos->nTotalSubscrivers;
-
-	return $nTotalSubscribers;
-}
-
 
 
 /**
@@ -238,11 +125,13 @@ function get_AW_count($atts)
  */
 add_shortcode( 'AWcount', 'get_AW_count' );
 
+
 /**
- * echo do_shortcode('[AWcount selectList="your_list_name_1, your_list_name_2"]');
+ * To define the lang to use for translation
  * 
  */
-add_filter('widget_text', 'do_shortcode');
+if( get_locale() != 'fr_FR') 
+	add_filter('locale','aweber_devfacile_redefine_locale');
 
 
 /*
