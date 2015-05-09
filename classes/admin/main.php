@@ -256,15 +256,16 @@ class AWeberDevFacile_Admin
 	    	echo '<tr valign="top">
                 <th scope="row">'.__( 'step-1', DEV_NAME ).'</th>
                 <td><a target="_blank" 
-                    href="https://auth.aweber.com/1.0/oauth/authorize_app/'.$this->APP_ID.'">'.__( 'get-authorization-code', DEV_NAME ).'</a>
+                    href="https://auth.aweber.com/1.0/oauth/authorize_app/'.$this->APP_ID.'">'.__( 'get-authorization-code', DEV_NAME ).'</a></td>
                 </tr>
 
                 <tr valign="top">
                 <th scope="row">'.__( 'step-2', DEV_NAME ).' '.__( 'paste-authorization-code', DEV_NAME ).'</th>
                 <td><input type="text" size="69" name="'.$this->adminOauthID.'"/></td>
+                </tr>
+                
                 </table>
                 <p class="submit">
-                    <input type="hidden" name="_wp_http_referer" value="'.admin_url('options-general.php?page=api-AW-devfacile.php').'" />
                     <input type="submit" id="aweber-settings-button" class="button-primary" value="'.__( 'btn-make-connection', DEV_NAME ).'" />
                 </p>';
 	    }

@@ -56,7 +56,7 @@ class AWeberDevFacile_Settings
 	public function getDatasByLists($sSelectedLists)
 	{	
 
-		if ( ! $this->pluginAdminOptions['content_infos']) 
+		if ( !$this->pluginAdminOptions['content_infos']) 
 		{
 			$oDataInfos = new AWeberDevFacile_dataInfos(-9, 0);
 			return $oDataInfos;// no infos in database options
@@ -117,7 +117,7 @@ class AWeberDevFacile_Settings
 		$aCountLists = array();
 
 		// create an array with infos
-		if ( ! $this->pluginAdminOptions['content_infos']) 
+		if ( !$this->pluginAdminOptions['content_infos']) 
 		{
 			$aCountLists[0] = array();
 		}	
@@ -147,7 +147,7 @@ class AWeberDevFacile_Settings
 	public function removeRecord($sSelectedLists)
 	{
 
-		if ( ! $this->pluginAdminOptions['content_infos']) 
+		if ( !$this->pluginAdminOptions['content_infos']) 
 		{
 			return 1;// no infos, add it
 		}	
