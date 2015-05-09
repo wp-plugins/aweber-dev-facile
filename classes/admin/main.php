@@ -264,7 +264,7 @@ class AWeberDevFacile_Admin
                 <td><input type="text" size="69" name="'.$this->adminOauthID.'"/></td>
                 </table>
                 <p class="submit">
-                    <input type="hidden" name="_wp_http_referer" value="'.admin_url('options-general.php?page=aweber-devfacile.php').'" />
+                    <input type="hidden" name="_wp_http_referer" value="'.admin_url('options-general.php?page=api-AW-devfacile.php').'" />
                     <input type="submit" id="aweber-settings-button" class="button-primary" value="'.__( 'btn-make-connection', DEV_NAME ).'" />
                 </p>';
 	    }
